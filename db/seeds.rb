@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(email: 'jsmith@email.com', password: 'smith123')
-costume = Costume.create(name: 'Pumpkin Patch', size: 'Medium', category: 'Halloween', price: 20, description: 'Fun halloween costume', user: user)
-Booking.create(confirmation: true, user: user, costume: costume)
+user = User.create!(first_name: "Dennis", last_name: "Rodman", address: "Chicago and Pyeongyang", email: 'dfsfsd@email.com', password: 'smith123')
+costume = Costume.create!(name: 'Pumpkin Patch', size: 'Medium', category: 'Halloween', price: 20, description: 'Fun halloween costume', user: user)
+Booking.create!(confirmation: true, user: user, costume: costume)
