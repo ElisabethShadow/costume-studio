@@ -24,6 +24,15 @@ class CostumesController < ApplicationController
     end
   end
 
+   def destroy
+    @costume = Costume.find(params[:id])
+    @costume.destroy
+
+    # no need for app/views/restaurants/destroy.html.erb
+
+    redirect_to costumes_path
+  end
+
   private
 
   def costume_params
