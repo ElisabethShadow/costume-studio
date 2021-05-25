@@ -42,3 +42,4 @@ class CostumesController < ApplicationController
     params.require(:costume).permit(:name, :description, :size, :price, :category)
   end
 end
+
