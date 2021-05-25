@@ -1,6 +1,11 @@
 class CostumesController < ApplicationController
-
   def index
+    @categories = Costume.categories
+    @number_of_costumes = categories.map { |cat| Costume.where(category: cat).length }
+
+    @total_number_of_costumes = 0
+    @total_number_of_costumes = @number_of_costumes.each { |n| @total_number_of_costumes += n }
+
     if params["category"]
       @category = params[:category]
       @costumes = Costume.where(category: @category)
@@ -14,6 +19,7 @@ class CostumesController < ApplicationController
   def new
     @costume = Costume.new
   end
+
   def create
     @costume = Costume.new(costume_params)
     @costume.user = current_user
@@ -24,12 +30,9 @@ class CostumesController < ApplicationController
     end
   end
 
-   def destroy
+  def destroy
     @costume = Costume.find(params[:id])
     @costume.destroy
-
-    # no need for app/views/restaurants/destroy.html.erb
-
     redirect_to costumes_path
   end
 
@@ -38,5 +41,4 @@ class CostumesController < ApplicationController
   def costume_params
     params.require(:costume).permit(:name, :description, :size, :price, :category)
   end
-
-  end
+end
