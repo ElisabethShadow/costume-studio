@@ -8,7 +8,8 @@
 
 require "open-uri"
 
-CATEGORIES = [ "Halloween", "Pirates", "Cowbow", "Carnival", "Monster", "Middle Age", "Superhero", "Fantasy", "Anime", "Strange", "Weird", "Super Weird", "Disgusting"]
+# CATEGORIES = [ "Halloween", "Pirates", "Cowbow", "Carnival", "Monster", "Middle Age", "Superhero", "Fantasy", "Anime", "Strange", "Weird", "Super Weird", "Disgusting"]
+
 
 5.times do
 User.create!(
@@ -21,7 +22,7 @@ end
   costume = Costume.create!(
     name: Faker::Games::SuperSmashBros.fighter,
     size: %w[XS, S, M, L, XL, XXL].sample,
-    category: CATEGORIES.sample,
+    category: Costume.categories.sample,
     price: Faker::Number.between(from: 0.00, to: 200.00).round(2),
     description: Faker::TvShows::SouthPark.quote,
     user: User.all.sample)

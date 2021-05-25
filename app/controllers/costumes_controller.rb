@@ -1,4 +1,16 @@
 class CostumesController < ApplicationController
+
+  def index
+    if params["category"]
+      @category = params[:category]
+      @costumes = Costume.where(category: @category)
+      # raise
+    else
+      @category = nil
+      @costumes = Costume.all
+    end
+  end
+
   def new
     @costume = Costume.new
   end
@@ -17,4 +29,5 @@ class CostumesController < ApplicationController
   def costume_params
     params.require(:costume).permit(:name, :description, :size, :price, :category)
   end
-end
+
+  end
