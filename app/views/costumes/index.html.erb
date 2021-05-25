@@ -14,12 +14,11 @@
         <span class="sr-only">Toggle Dropdown</span>
       </button>
       <div class="dropdown-menu">
-        <%= link_to "All", costumes_path %> <br>
-        <% Costume.categories.each do |category| %>
-          <% number_of_costumes = Costume.where(category: category).length %>
-          <% if number_of_costumes > 0 %>
+        <%= link_to "All", costumes_path %> | <%= @total_number_of_costumes %> <br>
+        <% @categories.each_with_index do |category, index| %>
+          <% if @number_of_costumes[index] > 0 %>
           <!-- <div class="d-flex, justify-content-start"> -->
-            <%= link_to category, costumes_path(category: category) %> | <%= number_of_costumes %> <br>
+            <%= link_to category, costumes_path(category: category) %> | <%= @number_of_costumes[index] %> <br>
           <!-- </div> -->
           <% end %>
         <% end %>
