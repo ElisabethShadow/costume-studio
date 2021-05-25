@@ -1,40 +1,21 @@
-// Graphical variables
-@import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
-
-// External libraries
-@import "bootstrap/scss/bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-
-// Your CSS partials
-@import "components/index";
-@import "pages/index";
-
 .horiz-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
-  align-items: center;
-  overflow: hidden;
-  gap: 30px 30px;
-
 }
 
+.costume-card {
+  width: 200px;
+  height: 400px
+}
+
+
 .card-costume {
-
-
-  width: 300px;
-  height: 400px;
-
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-costume > img {
-  height: 300px;
+  height: 200px;
   width: 100%;
   object-fit: cover;
 }

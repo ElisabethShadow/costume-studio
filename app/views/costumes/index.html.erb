@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="d-flex">
+    <h1>Costumes</h1> |
+    <div class="btn-group">
+      <button class="btn btn-secondary btn-sm" type="button">
+        <%= " Show current category" %>
+      </button>
+      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <% Costume.categories.each do |category| %>
+          <% number_of_costumes = Costume.where(category: category).length %>
+          <% if number_of_costumes > 0 %>
+          <!-- <div class="d-flex, justify-content-start"> -->
+            <%= link_to category, costumes_path(category: category) %> | <%= number_of_costumes %> <br>
+          <!-- </div> -->
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+  <div class="horiz-grid">
+
+    <% @costumes.each do |costume| %>
+
+    <div class="card-costume">
+      <%= cl_image_tag costume.photo.key, height: 300, width: 400, crop: :fill %>
+      <div class="card-costume-infos">
+        <div>
+          <h2><%= costume.name %></h2>
+          <p><%= costume.category %></p>
+        </div>
+        <h2 class="card-costume-pricing"><%= costume.price %></h2>
+        <!-- <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
+      </div>
+      <div class="card-costume-infos">
+        <p><%= "By: #{costume.user.first_name} #{costume.user.last_name}"%></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
