@@ -1,6 +1,10 @@
 class CostumesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+  def show
+    @costume = Costume.find(params[:id])
+  end
+
   def index
     additional_vars_for_index_view
 
@@ -12,10 +16,6 @@ class CostumesController < ApplicationController
       @category = nil
       @costumes = Costume.all
     end
-  end
-
-  def show
-
   end
 
   def new
