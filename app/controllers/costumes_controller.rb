@@ -1,4 +1,8 @@
 class CostumesController < ApplicationController
+  def show
+    @costume = Costume.find(params[:id])
+  end
+
   def index
     additional_vars_for_index_view
 

@@ -1,0 +1,36 @@
+.container {
+  // display: flex;
+  justify-content: center;
+}
+
+.img-costume {
+  border: 10px solid black;
+  height: 620px;
+  width: 420px;
+  margin: auto;
+}
+
+.links-show {
+  text-align: right;
+}
+
+.btn-home {
+  background-color: #fef7ee;
+  font-weight: bold;
+  color: black;
+  padding: 8px 28px;
+  transition: opacity 0.3s ease;
+  border-color: #fef7ee;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+h2 {
+  font-weight: 900;
+  font-size: 36px;
+  margin: 10px;
+}
+
+.text-desc {
+  margin: 10px;
+}
