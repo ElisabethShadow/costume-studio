@@ -1,11 +1,12 @@
 class CostumesController < ApplicationController
   def index
+    # Additional variables for view
     additional_vars_for_index_view
 
     if params["category"]
       @category = params[:category]
       @costumes = Costume.where(category: @category)
-      # raise
+
     else
       @category = nil
       @costumes = Costume.all
