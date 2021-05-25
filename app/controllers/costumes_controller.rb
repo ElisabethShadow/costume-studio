@@ -1,10 +1,14 @@
 class CostumesController < ApplicationController
   def index
+<<<<<<< HEAD
+    additional_vars_for_index_view
+=======
     @categories = Costume.categories
     @number_of_costumes = @categories.map { |cat| Costume.where(category: cat).length }
 
     @total_number_of_costumes = 0
     @number_of_costumes.each { |n| @total_number_of_costumes += n }
+>>>>>>> master
 
     if params["category"]
       @category = params[:category]
@@ -41,4 +45,14 @@ class CostumesController < ApplicationController
   def costume_params
     params.require(:costume).permit(:name, :description, :size, :price, :category)
   end
+<<<<<<< HEAD
+
+  def additional_vars_for_index_view
+    @categories = Costume.categories
+    @number_of_costumes = @categories.map { |cat| Costume.where(category: cat).length }
+    @total_number_of_costumes = 0
+    @number_of_costumes.each { |n| @total_number_of_costumes += n }
+  end
+=======
+>>>>>>> master
 end
