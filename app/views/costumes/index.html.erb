@@ -14,7 +14,7 @@
         <span class="sr-only">Toggle Dropdown</span>
       </button>
       <div class="dropdown-menu">
-        <%= link_to "All", costumes_path %> | <%= Costume.all.length %> <br>
+        <%= link_to "All", costumes_path %> <br>
         <% Costume.categories.each do |category| %>
           <% number_of_costumes = Costume.where(category: category).length %>
           <% if number_of_costumes > 0 %>
