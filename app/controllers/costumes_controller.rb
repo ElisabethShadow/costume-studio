@@ -1,4 +1,6 @@
 class CostumesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     additional_vars_for_index_view
 
@@ -12,6 +14,10 @@ class CostumesController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   def new
     @costume = Costume.new
   end
@@ -20,7 +26,7 @@ class CostumesController < ApplicationController
     @costume = Costume.new(costume_params)
     @costume.user = current_user
     if @costume.save
-      redirect_to root_path
+      redirect_to costume_path(costume)
     else
       render :new
     end
