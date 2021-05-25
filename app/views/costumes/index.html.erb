@@ -5,26 +5,6 @@
         | <%= @category %>
       <% end %>
     </h1>
-    <div> </div>
-    <div class="btn-group">
-      <button class="btn btn-secondary btn-sm btn-category" type="button">
-        Categories
-      </button>
-      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split btn-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu">
-        <%= link_to "All", costumes_path %> | <%= @total_number_of_costumes %> <br>
-        <% @categories.each_with_index do |category, index| %>
-        <% if @number_of_costumes[index] > 0 %>
-          <!-- <div class="d-flex, justify-content-start"> -->
-            <%= link_to category, costumes_path(category: category) %> | <%= @number_of_costumes[index] %> <br>
-          <!-- </div> -->
-          <% end %>
-        <% end %>
-    </div>
-  </div>
-</div>
 
   <div class="horiz-grid">
     <% @costumes.each do |costume| %>
