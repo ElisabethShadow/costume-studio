@@ -1,16 +1,19 @@
 class BookingsController < ApplicationController
 
+  def index
+    @bookings = Booking.where(user_id: current_user)
+  end
+
   def show
     @booking = Booking.find(params[:id])
   end
 
   def new
-    @costume = Costumes.find(params[:costume_id])
+    @costume = Costume.find(params[:costume_id])
     @booking = Booking.new
   end
 
   def create
-    params[:booking][:date] = params[:booking][:date].to_datetime
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @costume_id = Costume.find(params[:costume_id])
@@ -39,6 +42,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:date)
+    params.require(:booking).permit(:check_in, :check_out)
   end
 end
