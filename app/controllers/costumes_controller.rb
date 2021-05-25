@@ -4,7 +4,7 @@ class CostumesController < ApplicationController
     @number_of_costumes = @categories.map { |cat| Costume.where(category: cat).length }
 
     @total_number_of_costumes = 0
-    @total_number_of_costumes = @number_of_costumes.each { |n| @total_number_of_costumes += n }
+    @number_of_costumes.each { |n| @total_number_of_costumes += n }
 
     if params["category"]
       @category = params[:category]
