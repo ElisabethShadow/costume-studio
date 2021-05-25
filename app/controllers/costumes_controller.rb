@@ -1,7 +1,7 @@
 class CostumesController < ApplicationController
   def index
     @categories = Costume.categories
-    @number_of_costumes = categories.map { |cat| Costume.where(category: cat).length }
+    @number_of_costumes = @categories.map { |cat| Costume.where(category: cat).length }
 
     @total_number_of_costumes = 0
     @total_number_of_costumes = @number_of_costumes.each { |n| @total_number_of_costumes += n }
