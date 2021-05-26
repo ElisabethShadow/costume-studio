@@ -40,7 +40,11 @@ Username: <%= @costume.user.first_name %>
     <p>Owner contact: <%= @costume.user.first_name %>
     <%= @costume.user.last_name %></br>
     <br>
-    <%= link_to "Request to rent", new_costume_booking_path(@costume), style: "font-size: 24px"%>
+    <% if @costume.user == current_user %>
+      <%= link_to "Back to Account-Page", user_path(current_user, option: "costumes"), style: "font-size: 24px"%>
+    <% else %>
+      <%= link_to "Request to rent", new_costume_booking_path(@costume), style: "font-size: 24px"%>
+    <% end %>
     </p>
 
   <div class="links-show">
