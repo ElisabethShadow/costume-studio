@@ -42,5 +42,12 @@
     border-width: 1px;
   }
 
+  &.confirm {
+    border-color: red;
+    border-width: 1px;
+    color: red;
+    box-shadow: 2px 2px 5px black;
+  }
+
 }
 

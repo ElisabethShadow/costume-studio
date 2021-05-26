@@ -27,7 +27,7 @@
   <div class="container cards-container">
     <% if @option == "bookings" %>
       <div>
-        <p>My Bookings - Renting</p>
+        <h1>My Bookings - Renting</h1>
         <div class="bookings m-4 p-4">
           <% @user.bookings.each do |booking| %>
             <%= link_to booking_path(booking) do %>
@@ -54,7 +54,7 @@
         </div>
 
         <div>
-        <p>My Bookings - Rent Out</p>
+        <h1>My Bookings - Rent Out</h1>
         <div class="bookings m-4 p-4">
           <% @user.bookings_as_owner.each do |booking| %>
             <%= link_to booking_path(booking) do %>
@@ -72,7 +72,9 @@
                   <% if booking.confirmation %>
                     <div class="booking-status confirmed"><h5>Confirmed</h5></div>
                   <% else %>
-                    <div class="booking-status waiting"><h5>Pending</h5></div>
+                    <%= link_to user_path(current_user, confirm_booking: booking) do %>
+                      <div class="booking-status confirm"><h5>Confirm</h5></div>
+                    <% end %>
                   <% end %>
                 </div>
                 <% end %>
@@ -83,7 +85,7 @@
 
        <% if @option == "costumes" %>
       <div>
-        <p>My Costumes</p>
+        <h1>My Costumes</h1>
         <div class="bookings m-4 p-4">
           <% @user.costumes.each do |costume| %>
             <%= link_to costume_path(costume) do %>
