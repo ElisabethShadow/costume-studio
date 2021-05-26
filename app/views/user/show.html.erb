@@ -31,26 +31,29 @@
         <div class="bookings m-4 p-4">
           <% @user.bookings.each do |booking| %>
             <%= link_to booking_path(booking) do %>
-                <div class="booking-card d-flex border  justify-content-between m-3 p-3">
-                  <div>
-                    <h3> <%= booking.costume.name  %></h3>
-                    <p> <%= "From: #{booking.costume.user.first_name} #{booking.costume.user.first_name}"  %></p>
-                  </div>
-                  <div class="booking-info-box">
-                    <h4><%= " #{booking.check_in}  .........  #{booking.check_out}" %></h4>
-                  </div>
-                  <div class="booking-info-box">
-                    <h3><%= booking.costume.price %> EUR</h3>
-                  </div>
+              <div class="booking-card d-flex border  justify-content-between m-3 p-3">
+                <div>
+                  <h3> <%= booking.costume.name  %></h3>
+                  <p> <%= "From: #{booking.costume.user.first_name} #{booking.costume.user.first_name}"  %></p>
+                </div>
+                <div class="booking-info-box d-flex justify-content-end flex-column align-items-end">
+                    <div><h4><%= "From: #{booking.check_in}" %></h4></div>
+                    <div><h4><%= "To: #{booking.check_out}" %></h4></div>
+                </div>
+                <div class="booking-info-box">
+                  <h3><%= booking.costume.price %> EUR</h3>
+                </div>
+                <div>
                   <% if booking.confirmation %>
                     <div class="booking-status confirmed"><h5>Confirmed</h5></div>
                   <% else %>
                     <div class="booking-status waiting"><h5>Pending</h5></div>
                   <% end %>
                 </div>
-                <% end %>
+              </div>
             <% end %>
-           </div>
+          <% end %>
+          </div>
         </div>
 
         <div>
@@ -63,19 +66,22 @@
                     <h3> <%= booking.costume.name  %></h3>
                     <p> <%= "To: #{booking.user.first_name} #{booking.user.first_name}"  %></p>
                   </div>
-                  <div class="booking-info-box">
-                    <h4><%= " #{booking.check_in}  .........  #{booking.check_out}" %></h4>
+                  <div class="booking-info-box d-flex justify-content-end flex-column align-items-end">
+                      <div><h4><%= "From: #{booking.check_in}" %></h4></div>
+                      <div><h4><%= "To: #{booking.check_out}" %></h4></div>
                   </div>
                   <div class="booking-info-box">
                     <h3><%= booking.costume.price %> EUR</h3>
                   </div>
-                  <% if booking.confirmation %>
-                    <div class="booking-status confirmed"><h5>Confirmed</h5></div>
-                  <% else %>
-                    <%= link_to user_path(current_user, confirm_booking: booking) do %>
-                      <div class="booking-status confirm"><h5>Confirm</h5></div>
+                  <div>
+                    <% if booking.confirmation %>
+                      <div class="booking-status confirmed"><h5>Confirmed</h5></div>
+                    <% else %>
+                      <%= link_to user_path(current_user, confirm_booking: booking) do %>
+                        <div class="booking-status confirm"><h5>Confirm</h5></div>
+                      <% end %>
                     <% end %>
-                  <% end %>
+                  </div>
                 </div>
                 <% end %>
             <% end %>
@@ -90,7 +96,9 @@
           <% @user.costumes.each do |costume| %>
             <%= link_to costume_path(costume) do %>
                 <div class="booking-card d-flex border  justify-content-between m-3 p-3">
-                  <%= cl_image_tag costume.photo.key %>
+                  <dir class="">
+                    <%= cl_image_tag costume.photo.key %>
+                  </dir>
                   <div>
                     <h3> <%= costume.name  %></h3>
                   </div>
