@@ -72,7 +72,7 @@
 
         <h1>Offering</h1>
         <div class="bookings">
-          <% @user.bookings.each do |booking| %>
+          <% @user.bookings_as_owner.each do |booking| %>
           <div class="d-flex align-items-center justify-content-between">
             <%= link_to booking_path(booking), class: "flex-grow-1 booking-link" do %>
               <div class="booking-card d-flex border  justify-content-between m-3 p-3">
