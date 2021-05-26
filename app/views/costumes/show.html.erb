@@ -1,55 +1,35 @@
-<!-- <h2>Costume Studio: Product Details</h2>
-Costume: <%= @costume.name %>
-Size: <%= @costume.size %>
-Category: <%= @costume.category %>
-Rental price: <%= @costume.price %>
-Description: <%= @costume.description %>
-Username: <%= @costume.user.first_name %>
-<%= @costume.user.last_name %> -->
-
-<%#= cl_image_tag(@costume.photo.key, width: 400, height: 600, crop: :fill) %>
-
-<%#= link_to "Back to Home", root_path %>
-<%#= link_to "Browse more costumes", index_path %>
-<%#= link_to "Profile", user_path %>
-
 
 <div class="container">
-  <div class="d-flex w-100 justify-content-between">
-    <h2><%= @costume.name %></h2>
-<!--     <div class="btn-group">
-      <button class="btn btn-secondary btn-sm btn-category" type="button">
-        Categories
-      </button>
-      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split btn-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-  </div> -->
-</div>
-
-
-<div class="img-costume"><%= cl_image_tag(@costume.photo.key, width: 400, height: 600, crop: :fill) %>
-</div>
-<div class="text-desc">
-  <p>Costume name: <%= @costume.name %></br>
-    Size: <%= @costume.size %></br>
-    Category: <%= @costume.category %></br>
-    Rental price: <%= @costume.price %></br>
-    Description: <%= @costume.description %></br></p>
-
-    <p>Owner contact: <%= @costume.user.first_name %>
-    <%= @costume.user.last_name %></br>
-    <br>
-    <% if @costume.user == current_user %>
-      <%= link_to "Back to Account-Page", user_path(current_user, option: "costumes"), style: "font-size: 24px"%>
-    <% else %>
-      <%= link_to "Request to rent", new_costume_booking_path(@costume), style: "font-size: 24px"%>
-    <% end %>
-    </p>
-
-  <div class="links-show">
-    <p>
-      <%= link_to "Back to category", "#" %>
-    </p>
+  <div class="w-100">
+    <h2 class="costume-title"><%= @costume.name %></h2>
   </div>
-</div>
+  <div class="costume-container">
+    <div class="img-costume">
+      <%= cl_image_tag(@costume.photo.key, width: 400, height: 600, crop: :fill) %>
+    </div>
+
+    <div class="text-desc">
+      <p class="costume-indication">Costume name: <%= @costume.name %></br>
+        Size: <%= @costume.size %></br>
+        Category: <%= @costume.category %></br>
+        Rental price: <%= @costume.price %></br>
+        Description: <%= @costume.description %></br></p>
+
+        <p class="costume-indication">Owner contact: <%= @costume.user.first_name %>
+          <%= @costume.user.last_name %></br>
+          <br>
+          <% if @costume.user == current_user %>
+          <%= link_to "Back to Account-Page", user_path(current_user, option: "costumes"), class: "btn-action"%>
+          <% else %>
+          <%= link_to "Request to rent", new_costume_booking_path(@costume),class: "btn-action" %>
+          <% end %>
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="links-show">
+        <%= link_to "Back to category", "#", class: "btn-back" %>
+    </div>
+  </div>
