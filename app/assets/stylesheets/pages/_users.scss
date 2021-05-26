@@ -1,0 +1,53 @@
+.bookings {
+  background-color: white;
+
+  p {
+    font-size: 16px;
+  }
+}
+
+.booking-card {
+  display: flex;
+  align-items: center;
+  justify-content:between;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.booking-info-box {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+
+.booking-status {
+  display: flex;
+  width: 150px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  // vertical-align: center;
+  border: solid;
+
+  &.confirmed {
+    background: green;
+    color: white;
+  }
+
+  &.waiting {
+    border-color: gray;
+    border-width: 1px;
+  }
+
+  &.confirm {
+    border-color: red;
+    border-width: 1px;
+    color: red;
+    box-shadow: 2px 2px 5px black;
+  }
+
+}
+

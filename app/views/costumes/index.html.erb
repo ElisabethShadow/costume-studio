@@ -1,12 +1,10 @@
-<div class="container">
-  <div class="d-flex w-100 justify-content-between">
-    <h1>Costumes
-      <% if !@category.nil? %>
-        | <%= @category %>
-      <% end %>
-    </h1>
+<div class="d-flex">
 
-    <div> </div>
+  <div class="container sidebar">
+    <div class="d-flex w-100 justify-content-between">
+      <h1>Costumes</h1>
+    </div>
+
     <div class="btn-group">
       <button class="btn btn-secondary btn-sm btn-category" type="button">
         Categories
@@ -23,28 +21,37 @@
           <!-- </div> -->
           <% end %>
         <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-  <div class="horiz-grid">
-    <% @costumes.each do |costume| %>
-    <%= link_to costume_path(costume), class: "card-link" do %>
-      <div class="card-costume">
-        <%= cl_image_tag costume.photo.key, height: 300, width: 400, crop: :fill %>
-        <div class="card-costume-infos">
-          <div>
-            <h2><%= costume.name %></h2>
-            <p><%= costume.category %></p>
+  <div class="container cards-container">
+    <h1>
+    <% if !@category.nil? %>
+      <%= @category %>
+    <% else %>
+      All
+    <% end %>
+    </h1>
+    <div class="horiz-grid">
+      <% @costumes.each do |costume| %>
+        <%= link_to costume_path(costume), class: "card-item" do %>
+        <div class="card-costume">
+          <%= cl_image_tag costume.photo.key, height: 300, width: 400, crop: :fill %>
+          <div class="card-costume-infos">
+            <div>
+              <h2><%= costume.name %></h2>
+              <p><%= costume.category %></p>
+            </div>
+            <h2 class="card-costume-pricing"><%= costume.price %>€</h2>
+            <!-- <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
           </div>
-          <h2 class="card-costume-pricing"><%= costume.price %>€</h2>
-          <!-- <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
+          <div class="card-costume-owner py-0, my-0">
+            <p><%= "By: #{costume.user.first_name} #{costume.user.last_name}"%></p>
+          </div>
         </div>
-        <div class="card-costume-owner py-0, my-0">
-          <p><%= "By: #{costume.user.first_name} #{costume.user.last_name}"%></p>
-        </div>
-      </div>
-    <% end %>
-    <% end %>
+      <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -10,6 +10,36 @@ require "open-uri"
 
 # CATEGORIES = [ "Halloween", "Pirates", "Cowbow", "Carnival", "Monster", "Middle Age", "Superhero", "Fantasy", "Anime", "Strange", "Weird", "Super Weird", "Disgusting"]
 
+person1 = User.create!(
+  first_name: "Luka", last_name: "Doncic",
+  address: "Dallas, Lucas Oil Stadium", email: "mvp.2021@dallas.com",
+  password: 111111)
+
+#1 of Doncic
+costume1 = Costume.create!(
+    name: Faker::Games::SuperSmashBros.fighter,
+    size: %w[XS, S, M, L, XL, XXL].sample,
+    category: Costume.categories.sample,
+    price: Faker::Number.between(from: 0.00, to: 200.00).round(2),
+    description: Faker::TvShows::SouthPark.quote,
+    user: person1)
+
+file = URI.open('https://picsum.photos/200/300?random=1')
+costume1.photo.attach(io: file, filename: Faker::Games::SuperSmashBros.stage, content_type: 'image/jpg')
+
+#1 of Doncic
+costume2 = Costume.create!(
+    name: Faker::Games::SuperSmashBros.fighter,
+    size: %w[XS, S, M, L, XL, XXL].sample,
+    category: Costume.categories.sample,
+    price: Faker::Number.between(from: 0.00, to: 200.00).round(2),
+    description: Faker::TvShows::SouthPark.quote,
+    user: person1)
+
+file = URI.open('https://picsum.photos/200/300?random=1')
+costume2.photo.attach(io: file, filename: Faker::Games::SuperSmashBros.stage, content_type: 'image/jpg')
+
+# random
 
 5.times do
 User.create!(
@@ -17,6 +47,7 @@ User.create!(
   address: Faker::Address.full_address, email: Faker::Internet.email,
   password: Faker::Internet.password)
 end
+
 
 7.times do
   costume = Costume.create!(
@@ -36,4 +67,12 @@ Costume.all.sample(4).each_with_index do |costume, index|
   confirmation = index%4 == 0 ? true : false
   Booking.create!(confirmation: confirmation, user: user, costume: costume)
 end
+
+
+Booking.create!(confirmation: false, user: User.find(2), costume: costume1, check_in: "2021-05-1", check_out: "2021-05-3")
+Booking.create!(confirmation: false, user: User.find(3), costume: costume2,  check_in: "2021-05-1", check_out: "2021-05-3")
+Booking.create!(confirmation: true, user: User.find(4), costume: costume1,  check_in: "2021-06-1", check_out: "2021-06-3")
+Booking.create!(confirmation: false, user: person1, costume: Costume.find(4),  check_in: "2021-05-1", check_out: "2022-05-3")
+Booking.create!(confirmation: true, user: person1, costume: Costume.find(5),  check_in: "2022-01-1", check_out: "2022-01-30")
+
 

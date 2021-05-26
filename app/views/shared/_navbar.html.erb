@@ -1,7 +1,7 @@
 <header class="bh-header" id="header">
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="nav-item active">
-        <%= link_to "Costume Studio", root_path, class: "nav-link-home" %>
+        <%= link_to "Costume Studio", costumes_path, class: "nav-link-home" %>
   </div>
 <%#= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form">
@@ -26,13 +26,16 @@
       <li class="nav-item dropdown">
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Rent your costume", "#", class: "dropdown-item" %>
-          <%= link_to "Account", "#", class: "dropdown-item" %>
-          <%= link_to "Sign out", "#", class: "dropdown-item" %>
+          <%= link_to "Rent your costume", new_costume_path, class: "dropdown-item" %>
+          <% if current_user.nil? %>
+            <%= link_to "Sign in", new_user_session_path, class: "dropdown-item" %>
+          <% else %>
+            <%= link_to "Account", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Sign out", destroy_user_session_path, class: "dropdown-item" %>
+          <% end %>
           <%= link_to "FAQ", "#", class: "dropdown-item" %>
         </div>
       </li>
     </ul>
   </div>
 </div>
-</header>

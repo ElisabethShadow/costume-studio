@@ -1,9 +1,13 @@
-<h1>Create new costume</h1>
-<%= simple_form_for(@costume) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :category %>
-  <%= f.input :price %>
-  <%= f.input :description %>
-  <%= f.input :size %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h1>Create new costume</h1>
+  <%= simple_form_for(@costume) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :category, collection: [ "Halloween", "Pirates", "Cowbow", "Carnival", "Monster", "Middle Age", "Superhero", "Fantasy", "Anime", "Strange", "Weird", "Super Weird", "Disgusting" ] %>
+    <%= f.input :price %>
+    <%= f.input :description %>
+    <%= f.input :size %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit %>
+  <% end %>
+</div>
+

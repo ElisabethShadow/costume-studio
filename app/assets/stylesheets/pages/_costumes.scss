@@ -1,14 +1,36 @@
+.sidebar {
+  width: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 0px;
+}
+
+.cards-container {
+  margin-left: 50px;
+  margin-right: 50px;
+  border: solid;
+  border-left: 3px;
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+  border-color: black;
+}
+
 .horiz-grid {
   display: grid;
+  justify-items: start;
+  justify-content: start;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
   align-items: center;
+  grid-auto-flow: row;
   overflow: hidden;
   gap: 30px 30px;
 
 }
 
-.card-link {
+.card-item {
+  margin: 0;
+  padding: 0;
   text-decoration: none;
 }
 
@@ -20,9 +42,9 @@
 }
 
 .card-costume {
+  justify-self: start;
   width: 300px;
   height: 400px;
-
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -67,4 +89,9 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.img-thumbnail {
+  width: 300px;
+  height: 300px;
 }
