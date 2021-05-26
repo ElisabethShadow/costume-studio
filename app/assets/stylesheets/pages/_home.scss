@@ -2,3 +2,32 @@
 body {
   background-color: #fffbf7 ;
 }
+
+.home {
+  background-image: url("https://images.unsplash.com/photo-1585168313936-958263c1429f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=jean-charles-liess-arbogast-mAY3lypV7A0-unsplash.jpg");
+  height: 75vh;
+  background-size: cover;
+  opacity: 0.9;
+  background-repeat: no-repeat;
+  background-position-y: 17%;
+  position: relative;
+  margin-top: -1rem;
+}
+
+.btn-to-index {
+  position: absolute;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  top: 75%;
+  left: 45%;
+  &:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    text-decoration: none;
+  }
+}
