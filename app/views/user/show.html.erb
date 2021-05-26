@@ -129,18 +129,34 @@
         <div class="bookings m-4 p-4">
           <% @user.costumes.each do |costume| %>
             <%= link_to costume_path(costume) do %>
-                <div class="booking-card d-flex border  justify-content-between m-3 p-3">
-                  <dir class="img-thumbnail">
-                    <%= cl_image_tag costume.photo.key %>
-                  </dir>
-                  <div>
-                    <h3> <%= costume.name  %></h3>
+                <div class="booking-card d-flex border align-items-stretch justify-content-between m-4 p-4">
+                  <%= cl_image_tag costume.photo.key, height: 300, width: 250, crop: :fill %>
+                  <div class="ml-4 w-100 h-100 ">
+                    <div class="d-flex w-100 h-100 flex-column justify-content-between align-items-stretch">
+
+                      <div class="mb-4">
+                        <h3> <%= costume.name  %></h3>
+                        <p> <%= costume.description %> </p>
+                      </div>
+
+                      <div class="d-flex justify-content-between mt-3">
+                        <div>
+                          <h4><%="Size: #{costume.size}" %></h4>
+                        </div>
+                        <div>
+                          <h4><%= costume.price %> EUR</h4>
+                        </div>
+                      </div>
+
+                    </div>
+
+
                   </div>
                   <div class="booking-info-box">
-                    <h4><%= "#{costume.size}" %></h4>
+
                   </div>
                   <div class="booking-info-box">
-                    <h3><%= costume.price %> EUR</h3>
+
                   </div>
                 </div>
                 <% end %>
