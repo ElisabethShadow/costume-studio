@@ -1,0 +1,27 @@
+
+    <%   if @option == "bookings" && @user.bookings %>
+      <% @user.bookings.each do |booking| %>
+        <div class="d-flex">
+          <%= if booking.confirmation %>
+            <div class="check-circle-hollow"></div>
+          <% else %>
+            <div class="check-circle-filled"></div>
+          <% end %>
+          <div>
+            <p><%= booking.costume.name %></p>
+            <p><%= booking.costume.user %></p>
+          </div>
+          <div>
+            <p><%= booking.costume.price %></p>
+          </div>
+          <div>
+            <p><%= booking.check_in %></p>
+            <p><%= booking.check_out %></p>
+          </div>
+          <%= cl_image_tag booking.costume.photo.key %>
+        </div>
+        <% end %>
+      Bookings
+    <% elsif @option == "costumes" %>
+      Costumes
+    <% end %>
