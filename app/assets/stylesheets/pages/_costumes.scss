@@ -2,12 +2,13 @@
   width: 200px;
   margin-left: 50px;
   margin-right: 50px;
-  margin-top: 0px;
+  margin-top: 40px;
 }
 
 .cards-container {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: auto;
+  // margin-left: 50px;
+  // margin-right: 50px;
   border: solid;
   border-left: 3px;
   border-top: 0px;
@@ -20,18 +21,20 @@
   display: grid;
   justify-items: start;
   justify-content: start;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
   grid-auto-flow: row;
   overflow: hidden;
   gap: 30px 30px;
-
 }
 
 .card-item {
   margin: 0;
   padding: 0;
   text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .btn-category {
@@ -43,11 +46,12 @@
 
 .card-costume {
   justify-self: start;
-  width: 300px;
+  width: 250px;
   height: 400px;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-decoration: none;
 }
 
 .card-costume > img {
@@ -94,4 +98,23 @@
 .img-thumbnail {
   width: 300px;
   height: 300px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .horiz-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+@media only screen and (max-width: 900px) {
+  .horiz-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .horiz-grid {
+    grid-template-columns: 1fr
+  }
 }
