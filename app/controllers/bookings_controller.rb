@@ -19,7 +19,6 @@ class BookingsController < ApplicationController
     @costume = Costume.find(params[:costume_id])
     @booking.costume = @costume
     @booking.status = "pending"
-    raise
     if @booking.save
       redirect_to user_path(current_user)
     else
