@@ -49,6 +49,8 @@
     // color: white;
 }
     background: gray;
+    color: white;
+
 
   &.confirm {
     width: 50px;
@@ -57,9 +59,7 @@
     color: red;
     box-shadow: 2px 2px 5px $light-gray;
     }
-
-  }
-
+ }
 #user {
   font-weight: bold;
  }
