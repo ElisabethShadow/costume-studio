@@ -1,7 +1,7 @@
 .bookings {
 
   p {
-    font-size: 16px;
+  font-size: 16px;
   }
 }
 
@@ -9,7 +9,6 @@
   display: flex;
   align-items: center;
   justify-content:between;
-
   &:hover {
     text-decoration: none;
   }
@@ -42,12 +41,14 @@
   &.confirmed {
     background: green;
     color: white;
-  }
+}
 
   &.waiting {
+    border-color: gray;
+    border-width: 1px;
+    // color: white;
+}
     background: gray;
-    color: white;
-  }
 
   &.confirm {
     width: 50px;

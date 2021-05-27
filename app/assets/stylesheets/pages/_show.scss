@@ -49,3 +49,23 @@
   font-size: 20px;
   font-weight: 600;
 }
+
+.btn-primary {
+ background-color: #FFEBCD;
+ font-weight: bold;
+ color: black;
+ padding: 8px 28px;
+ transition: opacity 0.5s ease;
+ border-color: #FFEBCD;
+ border-radius: 10px;
+ border-width: 1px;
+
+ &.hover {
+    border-color: red;
+    border-width: 1px;
+    color: red;
+    box-shadow: 2px 2px 5px blac
+    }
+}
+
+
