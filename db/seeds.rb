@@ -10,7 +10,7 @@ require "open-uri"
 
 # CATEGORIES = [ "Halloween", "Pirates", "Cowbow", "Carnival", "Monster", "Middle Age", "Superhero", "Fantasy", "Anime", "Strange", "Weird", "Super Weird", "Disgusting"]
 
-# ID             1              2                   3                       4                       5                               6              7
+# ID             0              1                   2                       3                       4                               5              6
 FIRSTNAMES  = %w[Admin          Luka                Tom                     Hannelore               Hans-Peter                      Elisabeth      ABCDEFGHIJKLMNOPQRST]
 LASTNAMES   = %w[Administer     Doncic              Jerry                   Mueller                 Robinson                        Windsor        ABCDEFGHIJKLMNOPQRST]
 PASSWORDS   = %w[111111         111111              111111                  111111                  111111                          111111         111111 ]
@@ -85,11 +85,14 @@ USERS = [
   User.find(4),
   User.find(2),
   User.find(3),
-  User.find(5),
+  User.find(1),
+  User.find(3),
+  User.find(1)
 ]
 
 COSTUMENAMES.each_with_index do |name, index|
   costume = Costume.create!(
+    user: USERS[index],
     name: name,
     size: SIZES[index],
     category: CATEGORIES[index],
