@@ -8,13 +8,17 @@ class CostumesController < ApplicationController
   def index
     additional_vars_for_index_view
 
-    if params["category"]
-      @category = params[:category]
-      @costumes = Costume.where(category: @category)
-      # raise
+    if params[:query].present?
+      @costumes = Costume.search_by_name_category_and_description(params[:query])
     else
-      @category = nil
-      @costumes = Costume.all
+      if params["category"]
+        @category = params[:category]
+        @costumes = Costume.where(category: @category)
+      # raise
+      else
+        @category = nil
+        @costumes = Costume.all
+      end
     end
   end
 

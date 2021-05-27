@@ -1,6 +1,11 @@
+.bh-header {
+   margin: 0px;
+}
+
 .navbar {
   justify-content: space-between;
   background: #fef7ee;
+  margin: 0px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -17,6 +22,14 @@ a {
 
 .btn.btn-flat {
   padding: 8px 28px;
+  float: left;
+  padding: 6px;
+  border: none;
+  margin-top: 2px;
+  margin-right: 16px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-link-side {
@@ -25,11 +38,33 @@ a {
   margin-left: 5px;
   padding: 15px;
   color: black;
+  display: flex;
 }
 
 .nav-link-home {
   font-weight: 900;
   color: black;
-  font-size: 36px;
+  font-size: 32px;
+  padding: 10px;
+  display: flex;
+  @media only screen and (max-width: 1300px) {
+    padding: 10px 3px;
+    font-size: 20px;
+  }
 }
 
+.search-form {
+  display: flex;
+  // float: left;
+  padding: 6px;
+  border: none;
+  margin-top: 4px;
+  margin-right: auto;
+  margin-left: 10px;
+  font-size: 17px;
+}
+
+a:hover {
+  color: grey;
+  text-decoration: none;
+}

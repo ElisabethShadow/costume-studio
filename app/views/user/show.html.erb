@@ -2,111 +2,161 @@
 
   <div class="container sidebar">
     <div class="d-flex w-100 justify-content-between">
-      <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+      <h1 id="user"><%= "#{@user.first_name} #{@user.last_name}" %></h1>
     </div>
-
+    <br>
+    <br>
     <p><%= @user.address %> <p>
     <p><%= @user.email %></p>
-
     <br>
     <br>
     <br>
-
-    <p><%= link_to "My Bookings", user_path(current_user, option: "bookings") %></p>
-    <p><%= link_to "My Costumes", user_path(current_user, option: "costumes") %> </p>
-    <p><%= link_to "Add New Costume", new_costume_path %></p>
-
+    <p><%= link_to "My Bookings", user_path(current_user, option: "bookings"), class: "static_link" %></p>
+    <p><%= link_to "My Costumes", user_path(current_user, option: "costumes"), class: "static_link"%> </p>
+    <p><%= link_to "Add New Costume", new_costume_path, class: "static_link" %></p>
     <br>
     <br>
     <br>
-
-    <p><%= link_to "Edit profile", edit_user_registration_path %></p>
-
+    <p><%= link_to "Edit profile", edit_user_registration_path, class: "static_link" %></p>
   </div>
 
-  <div class="container cards-container">
+  <div class="container cards-container renting">
     <% if @option == "bookings" %>
       <div>
-        <h1>My Bookings - Renting</h1>
-        <div class="bookings m-4 p-4">
+        <h1>Renting</h1>
+        <div class="bookings">
           <% @user.bookings.each do |booking| %>
-            <%= link_to booking_path(booking) do %>
+          <div class="d-flex align-items-center justify-content-left">
+
+            <%= link_to booking_path(booking), class: "flex-grow-1 booking-link" do %>
               <div class="booking-card d-flex border  justify-content-between m-3 p-3">
-                <div>
+                <%= cl_image_tag booking.costume.photo.key, height: 100, width: 70, crop: :fill %>
+                <div class="flex-grow-1 ml-4">
                   <h3> <%= booking.costume.name  %></h3>
                   <p> <%= "From: #{booking.costume.user.first_name} #{booking.costume.user.first_name}"  %></p>
                 </div>
-                <div class="booking-info-box d-flex justify-content-end flex-column align-items-end">
-                    <div><h4><%= "From: #{booking.check_in}" %></h4></div>
-                    <div><h4><%= "To: #{booking.check_out}" %></h4></div>
+                <div class="booking-info-box d-flex justify-content-end align-items-end p-2">
+                  <div>
+                    <p>Start:</p>
+                    <p>End:</p>
+                  </div>
+                  <div class="p-4"></div>
+                  <div>
+                    <p><%= " #{booking.check_in}" %></p>
+                    <p><%= " #{booking.check_out}" %></p>
+                  </div>
+
                 </div>
-                <div class="booking-info-box">
+                <div class="booking-info-box ml-4">
                   <h3><%= booking.costume.price %> EUR</h3>
-                </div>
-                <div>
-                  <% if booking.confirmation %>
-                    <div class="booking-status confirmed"><h5>Confirmed</h5></div>
-                  <% else %>
-                    <div class="booking-status waiting"><h5>Pending</h5></div>
-                  <% end %>
                 </div>
               </div>
             <% end %>
+
+            <div>
+              <p style="text-align: center">Booking Status</p>
+              <% if booking.confirmation %>
+                <div class="booking-status confirmed p-0"><h5>Confirmed</h5></div>
+              <% else %>
+                <div class="booking-status waiting"><h5>Pending</h5></div>
+              <% end %>
+            </div>
+           </div>
+          <% end %>
+          </div>
+
+        <br>
+        <br>
+        <br>
+
+
+        <h1>Offering</h1>
+        <div class="bookings">
+          <% @user.bookings_as_owner.each do |booking| %>
+          <div class="d-flex align-items-center justify-content-between">
+            <%= link_to booking_path(booking), class: "flex-grow-1 booking-link" do %>
+              <div class="booking-card d-flex border  justify-content-between m-3 p-3">
+                <%= cl_image_tag booking.costume.photo.key, height: 100, width: 70, crop: :fill %>
+                <div class="flex-grow-1 ml-4">
+                  <h3> <%= booking.costume.name  %></h3>
+                  <p> <%= "To:"%></p>
+                  <p> <%= "#{booking.costume.user.first_name} #{booking.costume.user.first_name}"  %></p>
+                </div>
+                <div class="booking-info-box d-flex justify-content-end align-items-end p-2">
+                  <div>
+                    <p>Start:</p>
+                    <p>End:</p>
+                  </div>
+                  <div class="p-4"></div>
+                  <div>
+                    <p><%= " #{booking.check_in}" %></p>
+                    <p><%= " #{booking.check_out}" %></p>
+                  </div>
+
+                </div>
+                <div class="booking-info-box ml-4">
+                  <h3><%= booking.costume.price %> EUR</h3>
+                </div>
+              </div>
+            <% end %>
+            <div>
+                <% if booking.confirmation %>
+                  <p style="text-align: center">Booking staus</p>
+                  <div class="booking-status confirmed"><h5>Confirmed</h5></div>
+                <% else %>
+                  <p style="text-align: center">Confirm ?</p>
+                  <div class="d-flex">
+                    <%= link_to user_path(current_user, confirm_booking: booking) do %>
+                      <div class="booking-status confirm"><h5>✓</h5></div>
+                    <% end %>
+                    <%= link_to user_path(current_user, reject_booking: booking) do %>
+                      <div class="booking-status confirm"><h5>✗</h5></div>
+                    <% end %>
+                  </div>
+                <% end %>
+            </div>
+           </div>
           <% end %>
           </div>
         </div>
-
-        <div>
-        <h1>My Bookings - Rent Out</h1>
-        <div class="bookings m-4 p-4">
-          <% @user.bookings_as_owner.each do |booking| %>
-            <%= link_to booking_path(booking) do %>
-                <div class="booking-card d-flex border  justify-content-between m-3 p-3">
-                  <div>
-                    <h3> <%= booking.costume.name  %></h3>
-                    <p> <%= "To: #{booking.user.first_name} #{booking.user.first_name}"  %></p>
-                  </div>
-                  <div class="booking-info-box d-flex justify-content-end flex-column align-items-end">
-                      <div><h4><%= "From: #{booking.check_in}" %></h4></div>
-                      <div><h4><%= "To: #{booking.check_out}" %></h4></div>
-                  </div>
-                  <div class="booking-info-box">
-                    <h3><%= booking.costume.price %> EUR</h3>
-                  </div>
-                  <div>
-                    <% if booking.confirmation %>
-                      <div class="booking-status confirmed"><h5>Confirmed</h5></div>
-                    <% else %>
-                      <%= link_to user_path(current_user, confirm_booking: booking) do %>
-                        <div class="booking-status confirm"><h5>Confirm</h5></div>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-                <% end %>
-            <% end %>
-           </div>
-        </div>
       <% end %>
 
-       <% if @option == "costumes" %>
+
+
+      <% if @option == "costumes" %>
       <div>
         <h1>My Costumes</h1>
         <div class="bookings m-4 p-4">
           <% @user.costumes.each do |costume| %>
             <%= link_to costume_path(costume) do %>
-                <div class="booking-card d-flex border  justify-content-between m-3 p-3">
-                  <dir class="">
-                    <%= cl_image_tag costume.photo.key %>
-                  </dir>
-                  <div>
-                    <h3> <%= costume.name  %></h3>
+                <div class="booking-card d-flex border align-items-stretch justify-content-between m-4 p-4">
+                  <%= cl_image_tag costume.photo.key, height: 300, width: 250, crop: :fill %>
+                  <div class="ml-4 w-100 h-100 ">
+                    <div class="d-flex w-100 h-100 flex-column justify-content-between align-items-stretch">
+
+                      <div class="mb-4">
+                        <h3> <%= costume.name  %></h3>
+                        <p> <%= costume.description %> </p>
+                      </div>
+
+                      <div class="d-flex justify-content-between mt-3">
+                        <div>
+                          <h4><%="Size: #{costume.size}" %></h4>
+                        </div>
+                        <div>
+                          <h4><%= costume.price %> EUR</h4>
+                        </div>
+                      </div>
+
+                    </div>
+
+
                   </div>
                   <div class="booking-info-box">
-                    <h4><%= "#{costume.size}" %></h4>
+
                   </div>
                   <div class="booking-info-box">
-                    <h3><%= costume.price %> EUR</h3>
+
                   </div>
                 </div>
                 <% end %>
