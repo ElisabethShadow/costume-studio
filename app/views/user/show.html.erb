@@ -55,10 +55,13 @@
 
             <div>
               <p style="text-align: center">Booking Status</p>
-              <% if booking.confirmation %>
+              <% if booking.status == "confirmed" %>
                 <div class="booking-status confirmed p-0"><h5>Confirmed</h5></div>
-              <% else %>
+              <% elsif booking.status == "pending" %>
                 <div class="booking-status waiting"><h5>Pending</h5></div>
+                <% else %>
+                <div class="booking-status declined"><h5>Declined</h5></div>
+
               <% end %>
             </div>
            </div>
@@ -100,10 +103,10 @@
               </div>
             <% end %>
             <div>
-                <% if booking.confirmation %>
-                  <p style="text-align: center">Booking staus</p>
+                <% if booking.status == "confirmed" %>
+                  <p style="text-align: center">Booking status</p>
                   <div class="booking-status confirmed"><h5>Confirmed</h5></div>
-                <% else %>
+                <% elsif booking.status == "pending" %>
                   <p style="text-align: center">Confirm ?</p>
                   <div class="d-flex">
                     <%= link_to user_path(current_user, confirm_booking: booking) do %>
@@ -113,6 +116,10 @@
                       <div class="booking-status confirm"><h5>✗</h5></div>
                     <% end %>
                   </div>
+                  <% else %>
+                  <p style="text-align: center">Booking status</p>
+                  <div class="booking-status declined"><h5>Declined</h5></div>
+
                 <% end %>
             </div>
            </div>
