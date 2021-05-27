@@ -42,6 +42,22 @@ class CostumesController < ApplicationController
     redirect_to costumes_path
   end
 
+  def edit
+    @costume = Costume.find(params[:id])
+  end
+
+  def update
+    # @costume = Costume.update(costume_params)
+    @costume = Costume.find(params[:id])
+    @costume.update(costume_params)
+
+    if @costume.save
+      redirect_to costume_path(@costume)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def costume_params
