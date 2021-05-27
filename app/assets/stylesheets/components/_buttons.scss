@@ -5,7 +5,7 @@
     border: solid 1px grey;
     padding: 5px;
     border-radius: 5px;
-    background-color: rgba(233,196,106, 0.5);
+    background-color: #FFEBCD;
     &:hover {
       transform: scale(1.2)
     }
@@ -14,11 +14,11 @@
 .btn-back {
     font-size: 24px;
     text-decoration: none !important;
-    color: rgba(233,196,106, 0.5) !important;
+    color: black !important;
     border: solid 1px grey;
     padding: 5px;
     border-radius: 5px;
-    background-color: black;
+    background-color: #FFDAB9;
     &:hover {
       transform: scale(1.2)
     }
