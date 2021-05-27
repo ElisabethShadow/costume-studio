@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 body {
-  background-color: #fffbf7 ;
+  background-color: #e8c2ae ;
 }
 
 .home {
@@ -30,4 +30,9 @@ body {
     border: 1px solid black;
     text-decoration: none;
   }
+}
+
+.btn.dropdown-toggle {
+  border: solid 1px;
+  height: 40px;
 }
