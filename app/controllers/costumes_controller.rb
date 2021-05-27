@@ -6,6 +6,7 @@ class CostumesController < ApplicationController
   end
 
   def index
+    raise
     additional_vars_for_index_view
 
     if params["category"]
