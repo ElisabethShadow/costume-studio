@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @costume = Costume.find(params[:costume_id])
     @booking.costume = @costume
-    raise
+
     if @booking.save
       redirect_to user_path(current_user)
     else
