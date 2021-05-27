@@ -44,26 +44,17 @@
 }
 
   &.waiting {
-<<<<<<< HEAD
     border-color: gray;
     border-width: 1px;
+    // color: white;
 }
-=======
     background: gray;
-    color: white;
-  }
->>>>>>> 48f177ea508985ed065877801153c3095d17f5e7
 
   &.confirm {
     width: 50px;
     border-color: red;
     border-width: 1px;
     color: red;
-<<<<<<< HEAD
-    box-shadow: 2px 2px 5px black;
-    }
-}
-=======
     box-shadow: 2px 2px 5px $light-gray;
     }
 
@@ -97,4 +88,3 @@
   background: white
 
 }
->>>>>>> 48f177ea508985ed065877801153c3095d17f5e7
