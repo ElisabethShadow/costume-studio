@@ -13,7 +13,7 @@
     <br>
     <p><%= link_to "My Bookings", user_path(current_user, option: "bookings"), class: "static_link" %></p>
     <p><%= link_to "My Costumes", user_path(current_user, option: "costumes"), class: "static_link"%> </p>
-    <p><%= link_to "Add New Costume", new_costume_path, class: "static_link" %></p>
+    <p><%= link_to "Add New Rental", new_costume_path, class: "static_link" %></p>
     <br>
     <br>
     <br>
@@ -23,7 +23,7 @@
   <div class="container cards-container renting">
     <% if @option == "bookings" %>
       <div>
-        <h1>Renting</h1>
+        <h1 class="header-account">Renting</h1>
         <div class="bookings">
           <% @user.bookings.each do |booking| %>
           <div class="d-flex align-items-center justify-content-left">
@@ -73,7 +73,7 @@
         <br>
 
 
-        <h1>Offering</h1>
+        <h1 class="header-account">Offering</h1>
         <div class="bookings">
           <% @user.bookings_as_owner.each do |booking| %>
           <div class="d-flex align-items-center justify-content-between">
@@ -133,7 +133,7 @@
 
       <% if @option == "costumes" %>
       <div>
-        <h1>My Costumes</h1>
+        <h1 class="header-account">My Costumes</h1>
         <div class="bookings m-4 p-4">
           <% @user.costumes.each do |costume| %>
             <%= link_to costume_path(costume) do %>
@@ -187,6 +187,6 @@
            </div>
         </div>
         <% end %>
-    </div>
+      </div>
   </div>
 </div>
