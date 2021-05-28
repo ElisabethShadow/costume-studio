@@ -40,6 +40,11 @@
   // object-position: 50% 0%;
 }
 
+#new_booking {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
 
 
 .links-show {
@@ -70,8 +75,12 @@
   }
 }
 
+.btn-booking {
+  align-self: center;
+}
+
 .rental-date {
-  width: 120px;
+  width: 700px;
   display: inline;
   text-align: center;
   justify: center;
@@ -80,6 +89,11 @@
   input {
     margin-right: 20px;
     padding-right: 20px;
+  }
+
+  h2 {
+    float: left;
+    font-weight: bolder;
   }
 }
 
