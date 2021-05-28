@@ -15,6 +15,11 @@
   border-right: 0px;
   border-bottom: 0px;
   border-color: black;
+
+    .header-account {
+      margin-top: 35px;
+      margin-left: 25px;
+    }
 }
 
 .horiz-grid {
@@ -47,17 +52,22 @@
 .card-costume {
   justify-self: start;
   width: 250px;
-  height: 400px;
+  height: 100%;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 5px;
 }
 
 .card-costume > img {
   height: 300px;
   width: 100%;
-  object-fit: cover;
+  // padding: 8px;
+  object-fit: contain;
 }
 
 .card-costume h2 {
@@ -70,6 +80,7 @@
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  position:relative;
 }
 
 .card-costume .card-costume-infos {
@@ -78,10 +89,27 @@
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
+
+  .card-category {
+    position:absolute;
+    top: -34px;
+    right: 12px;
+    border: solid;
+    border-width: 1px;
+    border-color: #E8C1AE;
+    border-radius:10px;
+    padding: 4px 12px 4px 12px;
+    background: #FEF7EE;
+
+    p {
+      color: black;
+      font-weight: bolder;
+    }
+  }
 }
 
 .card-costume .card-costume-owner {
-  padding: 0 16px 0 16px;
+  padding: 0 16px 16px 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -118,3 +146,4 @@
     grid-template-columns: 1fr
   }
 }
+

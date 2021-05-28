@@ -39,7 +39,23 @@ class CostumesController < ApplicationController
   def destroy
     @costume = Costume.find(params[:id])
     @costume.destroy
-    redirect_to costumes_path
+    redirect_to user_path(option: costumes)
+  end
+
+  def edit
+    @costume = Costume.find(params[:id])
+  end
+
+  def update
+    # @costume = Costume.update(costume_params)
+    @costume = Costume.find(params[:id])
+    @costume.update(costume_params)
+
+    if @costume.save
+      redirect_to costume_path(@costume)
+    else
+      render :edit
+    end
   end
 
   private

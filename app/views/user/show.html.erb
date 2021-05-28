@@ -13,7 +13,7 @@
     <br>
     <p><%= link_to "My Bookings", user_path(current_user, option: "bookings"), class: "static_link" %></p>
     <p><%= link_to "My Costumes", user_path(current_user, option: "costumes"), class: "static_link"%> </p>
-    <p><%= link_to "Add New Costume", new_costume_path, class: "static_link" %></p>
+    <p><%= link_to "Add New Rental", new_costume_path, class: "static_link" %></p>
     <br>
     <br>
     <br>
@@ -23,14 +23,15 @@
   <div class="container cards-container renting">
     <% if @option == "bookings" %>
       <div>
-        <h1>Renting</h1>
+        <h1 class="header-account">Renting</h1>
         <div class="bookings">
           <% @user.bookings.each do |booking| %>
           <div class="d-flex align-items-center justify-content-left">
-
-            <%= link_to booking_path(booking), class: "flex-grow-1 booking-link" do %>
+            <div class="flex-grow-1 booking-link">
               <div class="booking-card d-flex border  justify-content-between m-3 p-3">
-                <%= cl_image_tag booking.costume.photo.key, height: 100, width: 70, crop: :fill %>
+                <%= link_to costume_path(booking.costume) do %>
+                  <%= cl_image_tag booking.costume.photo.key, height: 100, width: 70, crop: :fill %>
+                <% end %>
                 <div class="flex-grow-1 ml-4">
                   <h3> <%= booking.costume.name  %></h3>
                   <p> <%= "From: #{booking.costume.user.first_name} #{booking.costume.user.first_name}"  %></p>
@@ -51,11 +52,10 @@
                   <h3><%= booking.costume.price %> EUR</h3>
                 </div>
               </div>
-            <% end %>
-
+            </div>
             <div>
               <p style="text-align: center">Booking Status</p>
-              <% if booking.status == "confirmed" %>
+              <% if booking.status == "accepted" %>
                 <div class="booking-status confirmed p-0"><h5>Confirmed</h5></div>
               <% elsif booking.status == "pending" %>
                 <div class="booking-status waiting"><h5>Pending</h5></div>
@@ -73,13 +73,15 @@
         <br>
 
 
-        <h1>Offering</h1>
+        <h1 class="header-account">Offering</h1>
         <div class="bookings">
           <% @user.bookings_as_owner.each do |booking| %>
           <div class="d-flex align-items-center justify-content-between">
-            <%= link_to booking_path(booking), class: "flex-grow-1 booking-link" do %>
+            <div class="flex-grow-1 booking-link">
               <div class="booking-card d-flex border  justify-content-between m-3 p-3">
-                <%= cl_image_tag booking.costume.photo.key, height: 100, width: 70, crop: :fill %>
+                <%= link_to costume_path(booking.costume) do %>
+                  <%= cl_image_tag booking.costume.photo.key, height: 100, width: 70, crop: :fill %>
+                <% end %>
                 <div class="flex-grow-1 ml-4">
                   <h3> <%= booking.costume.name  %></h3>
                   <p> <%= "To:"%></p>
@@ -101,25 +103,25 @@
                   <h3><%= booking.costume.price %> EUR</h3>
                 </div>
               </div>
-            <% end %>
+            </div>
             <div>
-                <% if booking.status == "confirmed" %>
+                <% if booking.status == "accepted" %>
                   <p style="text-align: center">Booking status</p>
                   <div class="booking-status confirmed"><h5>Confirmed</h5></div>
                 <% elsif booking.status == "pending" %>
                   <p style="text-align: center">Confirm ?</p>
                   <div class="d-flex">
                     <%= link_to user_path(current_user, confirm_booking: booking) do %>
-                      <div class="booking-status confirm"><h5>✓</h5></div>
+                      <div class="booking-status confirm btn simple-square"><h5>✓</h5></div>
                     <% end %>
                     <%= link_to user_path(current_user, reject_booking: booking) do %>
-                      <div class="booking-status confirm"><h5>✗</h5></div>
+                      <div class="booking-status reject btn simple-square"><h5>✗</h5></div>
                     <% end %>
                   </div>
                   <% else %>
                   <p style="text-align: center">Booking status</p>
-                  <div class="booking-status declined"><h5>Declined</h5></div>
-
+                    <% raise %>
+                    <div class="booking-status declined"><h5>Declined</h5></div>
                 <% end %>
             </div>
            </div>
@@ -132,13 +134,13 @@
 
       <% if @option == "costumes" %>
       <div>
-        <h1>My Costumes</h1>
+        <h1 class="header-account">My Costumes</h1>
         <div class="bookings m-4 p-4">
           <% @user.costumes.each do |costume| %>
             <%= link_to costume_path(costume) do %>
                 <div class="booking-card d-flex border align-items-stretch justify-content-between m-4 p-4">
                   <%= cl_image_tag costume.photo.key, height: 300, width: 250, crop: :fill %>
-                  <div class="ml-4 w-100 h-100 ">
+                  <div class="d-flex flex-column justify-content-between ml-4 ">
                     <div class="d-flex w-100 h-100 flex-column justify-content-between align-items-stretch">
 
                       <div class="mb-4">
@@ -153,6 +155,21 @@
                         <div>
                           <h4><%= costume.price %> EUR</h4>
                         </div>
+                      </div>
+
+                      <div class="d-flex align-items-center justify-content-left">
+                        <div class="btn simple-square">
+                          <p><%= link_to "Edit", edit_costume_path(costume), class: "" %></p>
+                        </div>
+                        <% if @booked_costumes.include?(costume) %>
+                          <div class="btn simple-square ml-4">
+                            <p><%= link_to "Delete", costume_path(costume), method: :delete, class: "" %></p>
+                          </div>
+                        <% else %>
+                          <div class="ml-4">
+                            <p>Currently booked</p>
+                          </div>
+                        <% end %>
                       </div>
 
                     </div>
@@ -171,6 +188,6 @@
            </div>
         </div>
         <% end %>
-    </div>
+      </div>
   </div>
 </div>
