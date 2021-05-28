@@ -1,8 +1,7 @@
 .bookings {
-  background-color: white;
 
   p {
-    font-size: 16px;
+  font-size: 16px;
   }
 }
 
@@ -10,9 +9,13 @@
   display: flex;
   align-items: center;
   justify-content:between;
-
   &:hover {
     text-decoration: none;
+  }
+
+  p {
+    margin:0;
+    padding:0;
   }
 }
 
@@ -20,34 +23,85 @@
   display: flex;
   align-items: center;
   justify-content:center;
+
 }
 
 .booking-status {
   display: flex;
-  width: 150px;
-  height: 50px;
+  margin: 10px;
+  padding: 0;
+  width: 120px;
+  height: 30px;
   align-items: center;
   justify-content: center;
   text-align: center;
   // vertical-align: center;
-  border: solid;
+  border: none;
 
   &.confirmed {
     background: green;
     color: white;
-  }
+}
 
   &.waiting {
     border-color: gray;
     border-width: 1px;
-  }
+    // color: white;
+}
+    background: gray;
+    color: white;
+
 
   &.confirm {
-    border-color: red;
+    width: 50px;
+    border-color: $light-gray;
+    border-width: 1px;
+    color: green;
+    box-shadow: 2px 2px 5px $light-gray;
+    text-align: center;
+    background: white;
+    }
+
+  &.reject {
+    width: 50px;
+    border-color: $light-gray;
     border-width: 1px;
     color: red;
-    box-shadow: 2px 2px 5px black;
-  }
+    box-shadow: 2px 2px 5px $light-gray;
+    text-align: center;
+    background: white;
+    }
 
+  h5 {
+    margin: auto;
+    padding: auto;
+  }
+ }
+#user {
+  font-weight: bold;
+ }
+
+
+.static_link {
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
+
+.booking-link {
+  text-decoration:none !important;
+  background-color: white;
+  &:hover {
+    color: black;
+  }
+  padding: 0;
+  margin-top: 32px;
+}
+
+.renting {
+  background: white
+
+}

@@ -2,36 +2,44 @@
   width: 200px;
   margin-left: 50px;
   margin-right: 50px;
-  margin-top: 0px;
+  margin-top: 40px;
 }
 
 .cards-container {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: auto;
+  // margin-left: 50px;
+  // margin-right: 50px;
   border: solid;
   border-left: 3px;
   border-top: 0px;
   border-right: 0px;
   border-bottom: 0px;
   border-color: black;
+
+    .header-account {
+      margin-top: 35px;
+      margin-left: 25px;
+    }
 }
 
 .horiz-grid {
   display: grid;
   justify-items: start;
   justify-content: start;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
   grid-auto-flow: row;
   overflow: hidden;
   gap: 30px 30px;
-
 }
 
 .card-item {
   margin: 0;
   padding: 0;
   text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .btn-category {
@@ -43,17 +51,23 @@
 
 .card-costume {
   justify-self: start;
-  width: 300px;
-  height: 400px;
+  width: 250px;
+  height: 100%;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 5px;
 }
 
 .card-costume > img {
   height: 300px;
   width: 100%;
-  object-fit: cover;
+  // padding: 8px;
+  object-fit: contain;
 }
 
 .card-costume h2 {
@@ -66,6 +80,7 @@
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  position:relative;
 }
 
 .card-costume .card-costume-infos {
@@ -74,10 +89,27 @@
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
+
+  .card-category {
+    position:absolute;
+    top: -34px;
+    right: 12px;
+    border: solid;
+    border-width: 1px;
+    border-color: #E8C1AE;
+    border-radius:10px;
+    padding: 4px 12px 4px 12px;
+    background: #FEF7EE;
+
+    p {
+      color: black;
+      font-weight: bolder;
+    }
+  }
 }
 
 .card-costume .card-costume-owner {
-  padding: 0 16px 0 16px;
+  padding: 0 16px 16px 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -95,3 +127,23 @@
   width: 300px;
   height: 300px;
 }
+
+@media only screen and (max-width: 1200px) {
+  .horiz-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+@media only screen and (max-width: 900px) {
+  .horiz-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .horiz-grid {
+    grid-template-columns: 1fr
+  }
+}
+

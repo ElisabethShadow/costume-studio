@@ -10,69 +10,102 @@ require "open-uri"
 
 # CATEGORIES = [ "Halloween", "Pirates", "Cowbow", "Carnival", "Monster", "Middle Age", "Superhero", "Fantasy", "Anime", "Strange", "Weird", "Super Weird", "Disgusting"]
 
-person1 = User.create!(
-  first_name: "Luka", last_name: "Doncic",
-  address: "Dallas, Lucas Oil Stadium", email: "mvp.2021@dallas.com",
-  password: 111111)
+# ID             0              1                   2                       3                       4                               5              6
+FIRSTNAMES  = %w[Admin          Luka                Tom                     Hannelore               Hans-Peter                      Elisabeth      ABCDEFGHIJKLMNOPQRST]
+LASTNAMES   = %w[Administer     Doncic              Jerry                   Mueller                 Robinson                        Windsor        ABCDEFGHIJKLMNOPQRST]
+PASSWORDS   = %w[111111         111111              111111                  111111                  111111                          111111         111111 ]
+EMAILS      = %w[admin@mail.com mvp.2021@dallas.com tomhatesjerry@mail.org  priority1@freemail.def  derrobinsonhans@hansepeter.com  me@queen.co.uk abcdefghijklmnopqrst@alphabet.com]
 
-#1 of Doncic
-costume1 = Costume.create!(
-    name: Faker::Games::SuperSmashBros.fighter,
-    size: %w[XS, S, M, L, XL, XXL].sample,
-    category: Costume.categories.sample,
-    price: Faker::Number.between(from: 0.00, to: 200.00).round(2),
-    description: Faker::TvShows::SouthPark.quote,
-    user: person1)
-
-file = URI.open('https://picsum.photos/200/300?random=1')
-costume1.photo.attach(io: file, filename: Faker::Games::SuperSmashBros.stage, content_type: 'image/jpg')
-
-#1 of Doncic
-costume2 = Costume.create!(
-    name: Faker::Games::SuperSmashBros.fighter,
-    size: %w[XS, S, M, L, XL, XXL].sample,
-    category: Costume.categories.sample,
-    price: Faker::Number.between(from: 0.00, to: 200.00).round(2),
-    description: Faker::TvShows::SouthPark.quote,
-    user: person1)
-
-file = URI.open('https://picsum.photos/200/300?random=1')
-costume2.photo.attach(io: file, filename: Faker::Games::SuperSmashBros.stage, content_type: 'image/jpg')
-
-# random
-
-5.times do
-User.create!(
-  first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-  address: Faker::Address.full_address, email: Faker::Internet.email,
-  password: Faker::Internet.password)
+FIRSTNAMES.each_with_index do |firstname, index|
+  User.create!(
+  first_name: firstname,
+  last_name: LASTNAMES[index],
+  address: Faker::Address.full_address,
+  email: EMAILS[index],
+  password: PASSWORDS[index])
 end
 
+# =============================================================================
 
-7.times do
+COSTUMENAMES = [
+  "Big Bird",
+  "American Tourist Tropical",
+  "Portable silver toilet",
+  "Running Nose",
+  "The Finger",
+  "Dictator Coding Kim Jong-Un",
+  "Bigfoot and Toehairs",
+  "Fancy Shrek",
+  "Donald Cunt",
+  "Jager Bomber",
+  "The Berliner"
+]
+
+SIZES = ["M", "XL", "L", "M", "180", "180", "L", "420", "420", "420", "180", "180"]
+
+PRICES = [82.99, 45.99, 20.0, 96.0, 20.49, 100000, 101.25, 50.0, 0.01, 111, 69]
+
+CATEGORIES = ["Weird","Halloween", "Disgusting", "Strange", "Weird", "Weird", "Monster", "Fantasy", "Monster", "Monster", "Weird", "Superhero"]
+
+DESCIPTIONS = [
+  "Relive your favorite Seasame Street memories in this feathery madness!",
+  "Transport to a tropical island by dressing up in this fun, tourist costume! Package includes a visor, sunglasses, coconut drink, tshirt and shorts.",
+  "Ever wanted to know what it feels like to be a toilet? Sparkle and dazzle in this silver number.",
+  "Can you beat a running nose?",
+  "Description: When you hate everyone and everything !",
+  "Description: Just be a bad person one time in your life",
+  "This is a left foot. Does not come with right foot. NO REFUNDS!!!",
+  "You want to look fancy and nice for a day ? Don't hesistate with the Fancy Shrek !",
+  "You want to be a cunt ? Just rent the Donald Cunt and fuck the world for a night or day. !",
+  "Just spread love & Jager bombs",
+  "Description: Perfect for your sunday afternoon..."
+]
+
+IMAGES = [
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/sesame-st_ewnf7j.jpg",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/american-tourist-tropical_rbpfab.jpg",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/mens-toilet-costume_ycdfit.jpg",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/runny-nose-costume_q6ln8y.jpg",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/Capture_d_%C3%A9cran_2021-05-26_%C3%A0_16.06.20_oytrny.png",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/Capture_d_%C3%A9cran_2021-05-26_%C3%A0_16.10.06_imcmby.png",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/bigfoot_lchtxb.jpg",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/Capture_d_%C3%A9cran_2021-05-26_%C3%A0_16.13.36_w0flzh.png",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/Capture_d_%C3%A9cran_2021-05-26_%C3%A0_16.20.39_fwpasr.png",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622172629/Seeds%20-%20AirBnB/hlo4vozuchbqo7rbbq6z7ogambvp.png",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622172631/Seeds%20-%20AirBnB/hui56x49whsww920p32zxje5s09q.png"
+]
+
+OWNERS = [
+  User.find(2),
+  User.find(2),
+  User.find(2),
+  User.find(3),
+  User.find(4),
+  User.find(4),
+  User.find(2),
+  User.find(3),
+  User.find(1),
+  User.find(3),
+  User.find(1)
+]
+
+COSTUMENAMES.each_with_index do |name, index|
   costume = Costume.create!(
-    name: Faker::Games::SuperSmashBros.fighter,
-    size: %w[XS, S, M, L, XL, XXL].sample,
-    category: Costume.categories.sample,
-    price: Faker::Number.between(from: 0.00, to: 200.00).round(2),
-    description: Faker::TvShows::SouthPark.quote,
-    user: User.all.sample)
+    user: OWNERS[index],
+    name: name,
+    size: SIZES[index],
+    category: CATEGORIES[index],
+    price: PRICES[index],
+    description: DESCIPTIONS[index]
+    )
+    file = URI.open(IMAGES[index])
+    costume.photo.attach(io: file, filename: name, content_type: 'image/jpg')
 
-  file = URI.open('https://picsum.photos/200/300?random=1')
-  costume.photo.attach(io: file, filename: Faker::Games::SuperSmashBros.stage, content_type: 'image/jpg')
 end
 
-Costume.all.sample(4).each_with_index do |costume, index|
-  user = User.all.sample
-  confirmation = index%4 == 0 ? true : false
-  Booking.create!(confirmation: confirmation, user: user, costume: costume)
+COSTUME_ID = [1,2,3,4,5,6,7,8,9,10,11]
+USER_ID = [3,4,5,1,1,5,3,4,5,2,3]
+
+COSTUME_ID.each_with_index do |costume_id, index|
+  Booking.create!(status: "pending", user: User.find(USER_ID[index]), costume: Costume.find(costume_id), check_in: "2021-05-1", check_out: "2021-05-3")
 end
-
-
-Booking.create!(confirmation: false, user: User.find(2), costume: costume1, check_in: "2021-05-1", check_out: "2021-05-3")
-Booking.create!(confirmation: false, user: User.find(3), costume: costume2,  check_in: "2021-05-1", check_out: "2021-05-3")
-Booking.create!(confirmation: true, user: User.find(4), costume: costume1,  check_in: "2021-06-1", check_out: "2021-06-3")
-Booking.create!(confirmation: false, user: person1, costume: Costume.find(4),  check_in: "2021-05-1", check_out: "2022-05-3")
-Booking.create!(confirmation: true, user: person1, costume: Costume.find(5),  check_in: "2022-01-1", check_out: "2022-01-30")
-
-

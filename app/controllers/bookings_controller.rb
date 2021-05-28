@@ -18,6 +18,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @costume = Costume.find(params[:costume_id])
     @booking.costume = @costume
+    @booking.status = "pending"
+
     if @booking.save
       redirect_to user_path(current_user)
     else
@@ -41,7 +43,8 @@ class BookingsController < ApplicationController
 
   private
 
-  def booking_params
+def booking_params
     params.require(:booking).permit(:check_in, :check_out)
   end
+
 end

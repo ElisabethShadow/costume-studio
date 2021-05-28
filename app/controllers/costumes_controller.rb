@@ -8,13 +8,16 @@ class CostumesController < ApplicationController
   def index
     additional_vars_for_index_view
 
-    if params["category"]
-      @category = params[:category]
-      @costumes = Costume.where(category: @category)
-      # raise
+    if params[:query].present?
+      @costumes = Costume.search_by_name_category_and_description(params[:query])
     else
-      @category = nil
-      @costumes = Costume.all
+      if params["category"]
+        @category = params[:category]
+        @costumes = Costume.where(category: @category)
+      else
+        @category = nil
+        @costumes = Costume.all
+      end
     end
   end
 
@@ -36,7 +39,23 @@ class CostumesController < ApplicationController
   def destroy
     @costume = Costume.find(params[:id])
     @costume.destroy
-    redirect_to costumes_path
+    redirect_to user_path(option: costumes)
+  end
+
+  def edit
+    @costume = Costume.find(params[:id])
+  end
+
+  def update
+    # @costume = Costume.update(costume_params)
+    @costume = Costume.find(params[:id])
+    @costume.update(costume_params)
+
+    if @costume.save
+      redirect_to costume_path(@costume)
+    else
+      render :edit
+    end
   end
 
   private

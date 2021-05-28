@@ -1,0 +1,32 @@
+.btn-action {
+    font-size: 24px;
+    text-decoration: none !important;
+    color: black !important;
+    border: solid 1px grey;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #FFEBCD;
+    &:hover {
+      transform: scale(1.2)
+    }
+  }
+
+.btn-back {
+    font-size: 24px;
+    text-decoration: none !important;
+    color: black !important;
+    border: solid 1px grey;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #FFDAB9;
+    &:hover {
+      transform: scale(1.2)
+    }
+  }
+
+.btn.simple-square {
+  border: solid 1px;
+  height: 40px;
+  text-align: center;
+  justify: center;
+}
