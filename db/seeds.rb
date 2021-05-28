@@ -98,13 +98,8 @@ COSTUMENAMES.each_with_index do |name, index|
     price: PRICES[index],
     description: DESCIPTIONS[index]
     )
-
-    if IMAGES[index] != ""
-      file = URI.open(IMAGES[index])
-    else
-      file = URI.open(IMAGES.last)
-      costume.photo.attach(io: file, filename: name, content_type: 'image/jpg')
-    end
+    file = URI.open(IMAGES[index])
+    costume.photo.attach(io: file, filename: name, content_type: 'image/jpg')
 
 end
 
