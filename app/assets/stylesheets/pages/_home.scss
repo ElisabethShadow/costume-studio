@@ -13,25 +13,18 @@ body {
   position: relative;
 }
 
-.btn-to-index {
+.home-title {
+  font-size: 80px;
+  font-weight: bolder;
   position: absolute;
-  background-color: black;
-  color: white;
-  font-size: 24px;
-  padding: 8px;
-  border-radius: 10px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-  top: 75%;
-  left: 45%;
-  &:hover {
-    color: black;
-    background-color: white;
-    border: 1px solid black;
-    text-decoration: none;
-  }
+  top: 50%;
+  left: 25%;
+  text-shadow: 1px 1px 2px lightgrey;
+
 }
 
 .btn.dropdown-toggle {
   border: solid 1px;
   height: 40px;
+
 }
