@@ -1,0 +1,35 @@
+.footer {
+  background: #fef7ee;
+  font-size: 30px;
+  margin-top: 45px;
+}
+
+.footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+.footer li {
+  display: inline-block;
+  padding: 20px 20px;
+}
+
+.footer a {
+  color: #e8c2ae;
+}
+
+.footer a:hover {
+  color: grey;
+  transition: all 1s ease;
+}
+
+.footer p {
+  color: #4A4A4A;
+  font-size: 16px;
+  margin: 0;
+  padding: 0 0 20px 0;
+}
+
+.footer .fas {
+  color: #fd1015;
+}
