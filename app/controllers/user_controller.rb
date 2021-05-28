@@ -8,6 +8,7 @@ class UserController < ApplicationController
   def show
     @option = params[:option] || "bookings"
     @user = current_user
+    @booked_costumes = Booking.where(user: current_user).map { |booking| booking.costume }
 
     if params[:confirm_booking]
       @booking_to_confirm = Booking.find(params[:confirm_booking].to_i)

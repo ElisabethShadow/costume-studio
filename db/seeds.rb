@@ -16,6 +16,16 @@ LASTNAMES   = %w[Administer     Doncic              Jerry                   Muel
 PASSWORDS   = %w[111111         111111              111111                  111111                  111111                          111111         111111 ]
 EMAILS      = %w[admin@mail.com mvp.2021@dallas.com tomhatesjerry@mail.org  priority1@freemail.def  derrobinsonhans@hansepeter.com  me@queen.co.uk abcdefghijklmnopqrst@alphabet.com]
 
+FIRSTNAMES.each_with_index do |firstname, index|
+  User.create!(
+  first_name: firstname,
+  last_name: LASTNAMES[index],
+  address: Faker::Address.full_address,
+  email: EMAILS[index],
+  password: PASSWORDS[index])
+end
+
+# =============================================================================
 
 COSTUMENAMES = [
   "Big Bird",
@@ -35,7 +45,7 @@ SIZES = ["M", "XL", "L", "M", "180", "180", "L", "420", "420", "420", "180", "18
 
 PRICES = [82.99, 45.99, 20.0, 96.0, 20.49, 100000, 101.25, 50.0, 0.01, 111, 69]
 
-CATEGORIES = ["Weird","Halloween", "Disgusting Rental", "Strange", "Weird", "Weird", "Monster", "Fantasy", "Monster", "Monster", "Weird", "Superhero"]
+CATEGORIES = ["Weird","Halloween", "Disgusting", "Strange", "Weird", "Weird", "Monster", "Fantasy", "Monster", "Monster", "Weird", "Superhero"]
 
 DESCIPTIONS = [
   "Relive your favorite Seasame Street memories in this feathery madness!",
@@ -52,31 +62,20 @@ DESCIPTIONS = [
 ]
 
 IMAGES = [
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622037466/u3j0fnb1ejgakxzdpoz9f6j7t1r0.jpg",
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622037777/58p7sfrg8oqsh8jg8f9wonubhb56.jpg",
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622037851/lwe6lbgou76qsb80mbxdfvxjblim.jpg",
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622038117/xbetew5grasklxih06b3gvml1d7e.jpg",
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622038169/79f8w855huw3lkllfb89rdihhcp5.png",
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622038349/ux733o6dvk43kaf4ox6chf2b5uoh.png",
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622038398/xhdbaafmun3qecxdjd09k32u7569.jpg",
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622038717/j5l28w63t8c8uxbdyp8dh3rgt4hu.png",
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622038910/n7qpmby1j13bln3vcvkepq1mwo1t.png",
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622039373/vwwlje8pd4dgcefsb89sbjlgosqj.png",
-  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622037858/z2a7tjukioe0vx9g8l0ilui52s3z.png"
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622172629/Seeds%20-%20AirBnB/hlo4vozuchbqo7rbbq6z7ogambvp.png",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622172631/Seeds%20-%20AirBnB/hui56x49whsww920p32zxje5s09q.png"
 ]
 
-
-FIRSTNAMES.each_with_index do |firstname, index|
-  User.create!(
-  first_name: firstname,
-  last_name: LASTNAMES[index],
-  address: Faker::Address.full_address,
-  email: EMAILS[index],
-  password: PASSWORDS[index])
-end
-
-
-USERS = [
+OWNERS = [
   User.find(2),
   User.find(2),
   User.find(2),
@@ -92,7 +91,7 @@ USERS = [
 
 COSTUMENAMES.each_with_index do |name, index|
   costume = Costume.create!(
-    user: USERS[index],
+    user: OWNERS[index],
     name: name,
     size: SIZES[index],
     category: CATEGORIES[index],
@@ -100,75 +99,18 @@ COSTUMENAMES.each_with_index do |name, index|
     description: DESCIPTIONS[index]
     )
 
-    file = URI.open(IMAGES[index])
-    costume.photo.attach(io: file, filename: name, content_type: 'image/jpg')
+    if IMAGES[index] != ""
+      file = URI.open(IMAGES[index])
+    else
+      file = URI.open(IMAGES.last)
+      costume.photo.attach(io: file, filename: name, content_type: 'image/jpg')
+    end
+
 end
 
+COSTUME_ID = [1,2,3,4,5,6,7,8,9,10,11]
+USER_ID = [3,4,5,1,1,5,3,4,5,2,3]
 
-# person1 = User.create!(
-#   first_name: "Luka", last_name: "Doncic",
-#   address: "Dallas, Lucas Oil Stadium", email: "mvp.2021@dallas.com",
-#   password: 111111)
-
-
-#1 of Doncic
-# costume1 = Costume.create!(
-#     name: Faker::Games::SuperSmashBros.fighter,
-#     size: %w[XS, S, M, L, XL, XXL].sample,
-#     category: Costume.categories.sample,
-#     price: Faker::Number.between(from: 0.00, to: 200.00).round(2),
-#     description: Faker::TvShows::SouthPark.quote,
-#     user: person1)
-
-# file = URI.open('https://picsum.photos/200/300?random=1')
-# costume1.photo.attach(io: file, filename: Faker::Games::SuperSmashBros.stage, content_type: 'image/jpg')
-
-# #1 of Doncic
-# costume2 = Costume.create!(
-#     name: Faker::Games::SuperSmashBros.fighter,
-#     size: %w[XS, S, M, L, XL, XXL].sample,
-#     category: Costume.categories.sample,
-#     price: Faker::Number.between(from: 0.00, to: 200.00).round(2),
-#     description: Faker::TvShows::SouthPark.quote,
-#     user: person1)
-
-# file = URI.open('https://picsum.photos/200/300?random=1')
-# costume2.photo.attach(io: file, filename: Faker::Games::SuperSmashBros.stage, content_type: 'image/jpg')
-
-# # random
-
-# 5.times do
-# User.create!(
-#   first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-#   address: Faker::Address.full_address, email: Faker::Internet.email,
-#   password: Faker::Internet.password)
-# end
-
-
-# 7.times do
-#   costume = Costume.create!(
-#     name: Faker::Games::SuperSmashBros.fighter,
-#     size: %w[XS, S, M, L, XL, XXL].sample,
-#     category: Costume.categories.sample,
-#     price: Faker::Number.between(from: 0.00, to: 200.00).round(2),
-#     description: Faker::TvShows::SouthPark.quote,
-#     user: User.all.sample)
-
-#   file = URI.open('https://picsum.photos/200/300?random=1')
-#   costume.photo.attach(io: file, filename: Faker::Games::SuperSmashBros.stage, content_type: 'image/jpg')
-# end
-
-# Costume.all.sample(4).each_with_index do |costume, index|
-#   user = User.all.sample
-#   confirmation = index%4 == 0 ? true : false
-#   Booking.create!(confirmation: confirmation, user: user, costume: costume)
-# end
-
-
-# Booking.create!(confirmation: false, user: User.find(2), costume: costume1, check_in: "2021-05-1", check_out: "2021-05-3")
-# Booking.create!(confirmation: false, user: User.find(3), costume: costume2,  check_in: "2021-05-1", check_out: "2021-05-3")
-# Booking.create!(confirmation: true, user: User.find(4), costume: costume1,  check_in: "2021-06-1", check_out: "2021-06-3")
-# Booking.create!(confirmation: false, user: person1, costume: Costume.find(4),  check_in: "2021-05-1", check_out: "2022-05-3")
-# Booking.create!(confirmation: true, user: person1, costume: Costume.find(5),  check_in: "2022-01-1", check_out: "2022-01-30")
-
-
+COSTUME_ID.each_with_index do |costume_id, index|
+  Booking.create!(status: "pending", user: User.find(USER_ID[index]), costume: Costume.find(costume_id), check_in: "2021-05-1", check_out: "2021-05-3")
+end

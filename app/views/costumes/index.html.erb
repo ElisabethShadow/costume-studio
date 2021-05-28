@@ -12,8 +12,8 @@
       </div>
 
       <div class="btn-group">
-        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Category
+        <button type="button" class="btn simple-square" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category ▾
         </button>
         <div class="dropdown-menu">
           <%= link_to "All (#{@total_number_of_costumes})", costumes_path, class: "m-2"%> <br>
@@ -35,12 +35,14 @@
           <div class="card-costume-infos">
             <div>
               <h2><%= costume.name %></h2>
+            </div>
+            <div class="card-category">
               <p><%= costume.category %></p>
             </div>
             <h2 class="card-costume-pricing"><%= costume.price %>€</h2>
             <!-- <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
           </div>
-          <div class="card-costume-owner py-0, my-0">
+          <div class="card-costume-owner flex-grow-1 py-0, my-0">
             <p><%= "By: #{costume.user.first_name} #{costume.user.last_name}"%></p>
           </div>
         </div>

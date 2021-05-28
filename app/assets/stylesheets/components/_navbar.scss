@@ -62,9 +62,18 @@ a {
   margin-right: auto;
   margin-left: 10px;
   font-size: 17px;
+  align-self: center;
+
+  // .form-control {
+  //   height: 30px;
+  // }
 }
 
 a:hover {
   color: grey;
   text-decoration: none;
+}
+
+.nav-item.dropdown {
+  align-self: center;
 }
