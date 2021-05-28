@@ -3,16 +3,49 @@
   justify-content: center;
 }
 
-.img-costume {
-  border-radius: 5px;
-  height: 620px;
-  width: 420px;
-  margin: auto;
-  img {
-    border-radius: 5px;
-    box-shadow: 1px 1px 4px #E6E6E6;
-  }
+// .img-costume {
+//   border-radius: 5px;
+//   height: 620px;
+//   width: 420px;
+//   // margin: auto;
+//   img {
+//     border-radius: 5px;
+//     box-shadow: 1px 1px 4px #E6E6E6;
+//     // object-fit: contain;
+//     object-fit: cover;
+//     object-position: 0% 0%;
+//   }
+// }
+
+
+.img-costume  {
+  margin-top: 48px;
+  width: 400px;
+  height: 100%;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border: solid;
+  border-width: 4px;
+  // border-color: $light-gray;
+  border-color: white;
 }
+
+.img-costume  > img {
+  height: 500px;
+  width: 100%px;
+  margin-left: auto;
+  // padding: 8px;
+  object-fit: contain;
+  // object-position: 50% 0%;
+}
+
+#new_booking {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
 
 .links-show {
   text-align: right;
@@ -29,12 +62,54 @@
   border-width: 1px;
 }
 
-.costume-title {
-  font-weight: 900;
-  margin: 10px;
-  text-align: center;
-  font-size: 50px;
+.costume-summary {
+  margin-top: 48px;
+  margin-left: 48px;
 }
+
+.costume-title {
+  h2 {
+    font-weight: 900;
+    text-left: center;
+    font-size: 50px;
+  }
+}
+
+.btn-booking {
+  align-self: center;
+}
+
+.rental-date {
+  width: 700px;
+  display: inline;
+  text-align: center;
+  justify: center;
+  margin-bottom: 20px;
+
+  input {
+    margin-right: 20px;
+    padding-right: 20px;
+  }
+
+  h2 {
+    float: left;
+    font-weight: bolder;
+  }
+}
+
+.costume-info {
+  width: 70%;
+  .name {
+    width: 150px;
+    text-align:right;
+    margin-right: 32px;
+  }
+
+  .value {
+    text-align: left;
+  }
+}
+
 
 .text-desc {
   margin: 10px;

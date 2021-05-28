@@ -49,3 +49,40 @@
       </div>
     </div>
   </div>
+
+
+<!--//////////////////////////////////////////////////////////////////// -->
+
+    <div class="text-desc">
+      <p>Costume name: <%= @costume.name %></p>
+      <p>Size: <%= @costume.size %></p>
+      <p>Category: <%= @costume.category %></p>
+      <p>Rental price: <%= @costume.price %></p>
+      <p>Description: <%= @costume.description %></p>
+
+      <p class="costume-indication">Owner contact: <%= @costume.user.first_name %> <%= @costume.user.last_name %></p>
+        <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+        <%= simple_form_for [@costume, @booking] do |f| %>
+          <%= f.input :check_in, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :check_out, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.button :submit, "Book Costume", class: "btn simple-square" %>
+        <% end %>
+        </div>
+
+      </br>
+        <br>
+        <% if @costume.user == current_user %>
+        <%= link_to "Back to Account-Page", user_path(current_user, option: "costumes"), class: "btn-action"%>
+        <% else %>
+        <%= link_to "Request to rent", new_costume_booking_path(@costume),class: "btn-action" %>
+        <% end %>
+      </p>
+      </div>
+
+    </div>
+
+
+    <div class="links-show">
+      <%= link_to "Back to category", "#", class: "btn-back" %>
+    </div>
+    </div>

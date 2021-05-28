@@ -1,35 +1,46 @@
 
 <div class="container">
-  <div class="w-100">
-    <h2 class="costume-title"><%= @costume.name %></h2>
-  </div>
-  <div class="costume-container">
-    <div class="img-costume">
-      <%= cl_image_tag(@costume.photo.key, width: 400, height: 600, crop: :fill) %>
-    </div>
+  <div class="costume-container d-flex justify-content-around">
+	  <div class="img-costume">
+	    <%#= cl_image_tag(@costume.photo.key, width: 400, height: 600, crop: :fill) %>
+	    <%= cl_image_tag(@costume.photo.key, height: 500) %>
+	  </div>
 
-    <div class="text-desc">
-      <p class="costume-indication">Costume name: <%= @costume.name %></br>
-        Size: <%= @costume.size %></br>
-        Category: <%= @costume.category %></br>
-        Rental price: <%= @costume.price %></br>
-        Description: <%= @costume.description %></br></p>
+	  <div class="d-flex costume-summary flex-column justify-content-between">
+	  	<div class="costume-title">
+  			<h2><%= @costume.name %></h2>
+  		</div>
 
-        <p class="costume-indication">Owner contact: <%= @costume.user.first_name %>
-          <%= @costume.user.last_name %></br>
-          <br>
-          <% if @costume.user == current_user %>
-          <%= link_to "Back to Account-Page", user_path(current_user, option: "costumes"), class: "btn-action"%>
-          <% else %>
-          <%= link_to "Request to rent", new_costume_booking_path(@costume),class: "btn-action" %>
-          <% end %>
-        </p>
+	  	<div class="costume-info d-flex align-items-stretch flex-column w-100">
+	  		<div class="d-flex">
+	  			<!-- <div class="name"><p>Description</p></div> -->
+	  			<div class="value"><p><%= @costume.description %></p></div>
+	  		</div>
+	  		<div class="d-flex">
+	  			<div class="name"><p>Costume name</div>
+	  			<div class="value"><p><%= @costume.name %></p></div>
+	  		</div>
+	  		<div class="d-flex">
+	  			<div class="name"><p>Size</div>
+	  			<div class="value"><p><%= @costume.category %></p></div>
+	  		</div>
+	  		<div class="d-flex">
+	  			<div class="name"><p>Retal Price</div>
+	  			<div class="value"><p><%= @costume.price %></p></div>
+	  		</div>
+	  	</div>
+
+
+	  	<div class="rental-date" >
+	  		<h2>Rent Costume</h2>
+				<%= simple_form_for [@costume, @booking], class: "form-inline booking-form" do |f| %>
+	      		<%= f.input :check_in, as: :string, required: false, input_html: {class: "datepicker"} %>
+	        	<%= f.input :check_out, as: :string, required: false, input_html: {class: "datepicker"} %>
+	        	<%= f.button :submit, "Book Costume", class: "btn simple-square btn-booking" %>
+	      <% end %>
       </div>
 
-    </div>
-
-
-    <div class="links-show">
-        <%= link_to "Back to category", "#", class: "btn-back" %>
-    </div>
-  </div>
+			</div>
+	  </div>
+	</div>
+</div>>

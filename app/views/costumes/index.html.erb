@@ -31,7 +31,7 @@
       <% @costumes.each do |costume| %>
         <%= link_to costume_path(costume), class: "card-item" do %>
         <div class="card-costume">
-          <%= cl_image_tag costume.photo.key, crop: :fill %>
+            <%= cl_image_tag costume.photo.key, crop: :fill, gravity: :face, class: "image" %>
           <div class="card-costume-infos">
             <div>
               <h2><%= costume.name %></h2>
