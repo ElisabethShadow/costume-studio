@@ -54,11 +54,28 @@
 
   &.confirm {
     width: 50px;
-    border-color: red;
+    border-color: $light-gray;
+    border-width: 1px;
+    color: green;
+    box-shadow: 2px 2px 5px $light-gray;
+    text-align: center;
+    background: white;
+    }
+
+  &.reject {
+    width: 50px;
+    border-color: $light-gray;
     border-width: 1px;
     color: red;
     box-shadow: 2px 2px 5px $light-gray;
+    text-align: center;
+    background: white;
     }
+
+  h5 {
+    margin: auto;
+    padding: auto;
+  }
  }
 #user {
   font-weight: bold;

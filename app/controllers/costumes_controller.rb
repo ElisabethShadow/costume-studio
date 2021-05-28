@@ -39,7 +39,7 @@ class CostumesController < ApplicationController
   def destroy
     @costume = Costume.find(params[:id])
     @costume.destroy
-    redirect_to costumes_path
+    redirect_to user_path(option: costumes)
   end
 
   def edit

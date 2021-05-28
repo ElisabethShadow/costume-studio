@@ -52,6 +52,9 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-costume > img {
@@ -70,6 +73,7 @@
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  position:relative;
 }
 
 .card-costume .card-costume-infos {
@@ -78,10 +82,27 @@
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
+
+  .card-category {
+    position:absolute;
+    top: -34px;
+    right: 12px;
+    border: solid;
+    border-width: 1px;
+    border-color: #E8C1AE;
+    border-radius:10px;
+    padding: 4px 12px 4px 12px;
+    background: #FEF7EE;
+
+    p {
+      color: black;
+      font-weight: bolder;
+    }
+  }
 }
 
 .card-costume .card-costume-owner {
-  padding: 0 16px 0 16px;
+  padding: 0 16px 16px 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
