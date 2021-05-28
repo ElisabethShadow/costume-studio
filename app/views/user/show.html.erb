@@ -55,7 +55,7 @@
             </div>
             <div>
               <p style="text-align: center">Booking Status</p>
-              <% if booking.status == "confirmed" %>
+              <% if booking.status == "accepted" %>
                 <div class="booking-status confirmed p-0"><h5>Confirmed</h5></div>
               <% elsif booking.status == "pending" %>
                 <div class="booking-status waiting"><h5>Pending</h5></div>
@@ -105,7 +105,7 @@
               </div>
             </div>
             <div>
-                <% if booking.status == "confirmed" %>
+                <% if booking.status == "accepted" %>
                   <p style="text-align: center">Booking status</p>
                   <div class="booking-status confirmed"><h5>Confirmed</h5></div>
                 <% elsif booking.status == "pending" %>
@@ -120,7 +120,8 @@
                   </div>
                   <% else %>
                   <p style="text-align: center">Booking status</p>
-                  <div class="booking-status declined"><h5>Declined</h5></div>
+                    <% raise %>
+                    <div class="booking-status declined"><h5>Declined</h5></div>
                 <% end %>
             </div>
            </div>
