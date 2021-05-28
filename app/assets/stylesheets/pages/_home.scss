@@ -13,21 +13,3 @@ body {
   position: relative;
   margin-top: -1rem;
 }
-
-.btn-to-index {
-  position: absolute;
-  background-color: black;
-  color: white;
-  font-size: 24px;
-  padding: 8px;
-  border-radius: 10px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-  top: 75%;
-  left: 45%;
-  &:hover {
-    color: black;
-    background-color: white;
-    border: 1px solid black;
-    text-decoration: none;
-  }
-}
