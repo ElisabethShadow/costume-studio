@@ -62,15 +62,15 @@ DESCIPTIONS = [
 ]
 
 IMAGES = [
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/sesame-st_ewnf7j.jpg",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/american-tourist-tropical_rbpfab.jpg",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/mens-toilet-costume_ycdfit.jpg",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/runny-nose-costume_q6ln8y.jpg",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/Capture_d_%C3%A9cran_2021-05-26_%C3%A0_16.06.20_oytrny.png",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/Capture_d_%C3%A9cran_2021-05-26_%C3%A0_16.10.06_imcmby.png",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/bigfoot_lchtxb.jpg",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/Capture_d_%C3%A9cran_2021-05-26_%C3%A0_16.13.36_w0flzh.png",
+  "https://res.cloudinary.com/dmak3udzc/image/upload/v1622195503/Capture_d_%C3%A9cran_2021-05-26_%C3%A0_16.20.39_fwpasr.png",
   "https://res.cloudinary.com/dmak3udzc/image/upload/v1622172629/Seeds%20-%20AirBnB/hlo4vozuchbqo7rbbq6z7ogambvp.png",
   "https://res.cloudinary.com/dmak3udzc/image/upload/v1622172631/Seeds%20-%20AirBnB/hui56x49whsww920p32zxje5s09q.png"
 ]
